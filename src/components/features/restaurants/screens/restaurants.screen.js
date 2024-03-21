@@ -3,39 +3,47 @@ import { StatusBar, StyleSheet, View, SafeAreaView } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { Searchbar } from "react-native-paper";
 import RestaurantInfoCard from "../components/restaurantInfoCard.component";
+import styled from "styled-components";
+
+const Container = styled.SafeAreaView`
+  flex: 1;
+  margin-top: ${StatusBar.currentHeight}; /* only applies to Android. Same as SafeAreaView but for Android */
+  background-color: #f7f7f7;
+`;
+
+const SearchContainer = styled.View`
+  padding: 16px;
+  background-color: transparent;
+`;
+
+const SearchbarComponent = styled(Searchbar)`
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0 0 7px lightgray;
+`;
 
 const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.searchContainer}>
-        <Searchbar
+    <Container>
+      <SearchContainer>
+        <SearchbarComponent
           onChangeText={setSearchQuery}
           value={searchQuery}
-          style={styles.searchBarComponent}
           iconColor="gray"
         />
-      </View>
-      <View style={styles.mainContainer}>
+      </SearchContainer>
+      <View style={styles.Container}>
         <RestaurantInfoCard />
       </View>
       <ExpoStatusBar style="auto" />
-    </SafeAreaView>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight, // only applies to Android. Same as SafeAreaView but for Android
-    backgroundColor: "#F7F7F7",
-  },
-  searchContainer: {
-    padding: 16,
-    backgroundColor: "#f7f7f7",
-  },
-  mainContainer: {
+  Container: {
     flex: 1,
     padding: 16,
   },
