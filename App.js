@@ -1,5 +1,5 @@
 import React from "react";
-import RestaurantsScreen from "./src/components/features/restaurants/components/restaurant-info.component";
+import RestaurantsScreen from "./src/components/features/restaurants/screens/restaurants.screen";
 
 export default function App() {
   return (
