@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StatusBar, StyleSheet, View, SafeAreaView } from "react-native";
+import { StatusBar } from "react-native";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { Searchbar } from "react-native-paper";
 import RestaurantInfoCard from "../components/restaurantInfoCard.component";
@@ -22,6 +22,11 @@ const SearchbarComponent = styled(Searchbar)`
   box-shadow: 0 0 7px lightgray;
 `;
 
+const RestaurantInfoSection = styled.View`
+  flex: 1;
+  padding: 16px;
+`;
+
 const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -34,30 +39,12 @@ const RestaurantsScreen = () => {
           iconColor="gray"
         />
       </SearchContainer>
-      <View style={styles.Container}>
+      <RestaurantInfoSection>
         <RestaurantInfoCard />
-      </View>
+      </RestaurantInfoSection>
       <ExpoStatusBar style="auto" />
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  Container: {
-    flex: 1,
-    padding: 16,
-  },
-  searchBarComponent: {
-    backgroundColor: "#F7F7F7",
-    borderRadius: "5",
-    shadowOpacity: "100",
-    shadowColor: "lightgray",
-    shadowOffset: {
-      height: "0",
-      width: "0",
-    },
-    shadowRadius: "5",
-  },
-});
 
 export default RestaurantsScreen;
