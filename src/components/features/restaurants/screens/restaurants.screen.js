@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const Container = styled.SafeAreaView`
   flex: 1;
-  margin-top: ${StatusBar.currentHeight}; /* only applies to Android. Same as SafeAreaView but for Android */
+  margin-top: ${StatusBar.currentHeight}px; /* only applies to Android. Same as SafeAreaView but for Android */
   background-color: #f7f7f7;
 `;
 
