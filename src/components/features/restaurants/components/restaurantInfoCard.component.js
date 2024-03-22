@@ -50,7 +50,6 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.round(rating)));
-  console.log(ratingArray);
 
   return (
     <RestaurantCard elevation={5}>
