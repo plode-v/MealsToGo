@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StatusBar } from "react-native";
-import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { Searchbar } from "react-native-paper";
 import RestaurantInfoCard from "../components/restaurantInfoCard.component";
 import styled from "styled-components";
@@ -8,23 +7,23 @@ import styled from "styled-components";
 const Container = styled.SafeAreaView`
   flex: 1;
   margin-top: ${StatusBar.currentHeight}px;
-  background-color: #f7f7f7;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const SearchContainer = styled.View`
-  padding: 16px;
-  background-color: transparent;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const SearchbarComponent = styled(Searchbar)`
-  background-color: #f7f7f7;
+  background-color: ${(props) => props.theme.colors.bg.primary};
   border-radius: 5px;
   box-shadow: 0 0 7px lightgray;
 `;
 
 const RestaurantInfoSection = styled.View`
   flex: 1;
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const RestaurantsScreen = () => {
@@ -42,7 +41,6 @@ const RestaurantsScreen = () => {
       <RestaurantInfoSection>
         <RestaurantInfoCard />
       </RestaurantInfoSection>
-      <ExpoStatusBar style="auto" />
     </Container>
   );
 };

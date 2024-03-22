@@ -3,22 +3,23 @@ import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
 const RestaurantCard = styled(Card)`
-  background-color: #f7f7f7;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
-  padding: 16px;
-  background-color: transparent;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const Title = styled.Text`
-  padding: 16px;
-  background-color: #f7f7f7;
+  padding: ${(props) => props.theme.space[3]};
+  color: ${(props) => props.theme.colors.ui.primary};
+  font-family: ${(props) => props.theme.fonts.body};
 `;
 
 const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
-    name = "test name",
+    name = "Big Boy Burger",
     icon,
     photos = [
       "https://hips.hearstapps.com/hmg-prod/images/burger-king-cheeseburger-1666891208.jpg",
