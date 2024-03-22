@@ -6,7 +6,7 @@ const RestaurantCard = styled(Card)`
   background-color: #f7f7f7;
 `;
 
-const Image = styled(Card.Cover)`
+const RestaurantCardCover = styled(Card.Cover)`
   padding: 16px;
   background-color: transparent;
 `;
@@ -34,7 +34,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   return (
     <RestaurantCard elevation={5}>
-      <Image source={{ uri: photos[0] }} key={name} />
+      <RestaurantCardCover source={{ uri: photos[0] }} key={name} />
       <Title>{name}</Title>
     </RestaurantCard>
   );
