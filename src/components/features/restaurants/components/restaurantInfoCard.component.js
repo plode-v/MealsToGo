@@ -3,6 +3,9 @@ import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../../assets/star";
+import open from "../../../../../assets/open";
+import { Spacer } from "../../../spacer/spacer.component";
+import { Text } from "react-native";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -23,16 +26,40 @@ const Title = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.body};
 `;
 
+const MiddleRow = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: ${(props) => props.theme.space[2]};
+`;
+
 const Rating = styled.View`
   display: flex;
   flex-direction: row;
-  padding-top: ${(props) => props.theme.space[2]};
+`;
+
+const RestaurantStatus = styled.View`
+  display: flex;
+  flex-direction: row;
+  gap: ${(props) => props.theme.space[1]};
+  align-items: center;
+`;
+
+const RestaurantStatusText = styled.Text`
+  color: red;
+`;
+
+const BottomRow = styled.View`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 const Address = styled.Text`
   font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fontSizes.button};
   padding: ${(props) => props.theme.space[1]} ${(props) => props.theme.space[0]};
+  width: 60%;
 `;
 
 const RestaurantInfoCard = ({ restaurant = {} }) => {
@@ -45,7 +72,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
     ],
     address = "9 Irvine Blvd Irvine, CA 92604",
     isOpenNow = true,
-    rating = 5,
+    rating = 3.4,
     isClosedTemporarily = false,
   } = restaurant;
 
@@ -56,12 +83,24 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
       <RestaurantCardCover source={{ uri: photos[0] }} key={name} />
       <Info>
         <Title>{name}</Title>
-        <Rating>
-          {ratingArray.map(() => (
-            <SvgXml xml={star} width={20} height={20} />
-          ))}
-        </Rating>
-        <Address>{address}</Address>
+        <MiddleRow>
+          <Rating>
+            {ratingArray.map((val, idx) => (
+              <SvgXml xml={star} width={20} height={20} key={idx} />
+            ))}
+          </Rating>
+          <RestaurantStatus>
+            {!isClosedTemporarily && (
+              <RestaurantStatusText variant="label">
+                CLOSED TEMPORARILY
+              </RestaurantStatusText>
+            )}
+            {isOpenNow && <SvgXml xml={open} height={20} width={20} />}
+          </RestaurantStatus>
+        </MiddleRow>
+        <BottomRow>
+          <Address>{address}</Address>
+        </BottomRow>
       </Info>
     </RestaurantCard>
   );
